@@ -10,7 +10,6 @@
 				<br>
 				<br>
 				<table class="table">
-					{% for item in items %}
 					<tr>
 						<th><h5>Items: <strong>{{ order.get_cart_items }}</strong></h5></th>
 						<th><h5>Total:<strong> GHC{{ order.get_cart_total }}</strong></h5></th>
@@ -18,7 +17,6 @@
 							<a  style="float:right; margin:5px;" class="btn btn-success" href="{% url 'checkout' %}">Checkout</a>
 						</th>
 					</tr>
-					{% endfor %}
 				</table>
 
 			</div>
@@ -40,9 +38,9 @@
 					<div style="flex:1">
 						<p class="quantity">{{item.quantity}}</p>
 						<div class="quantity">
-							<img class="chg-quantity" src="{% static  'images/arrow-up.png' %}">
+							<img data-product="{{item.product.id}}" data-action="add" class="chg-quantity update-cart" src="{% static  'images/arrow-up.png' %}">
 					
-							<img class="chg-quantity" src="{% static  'images/arrow-down.png' %}">
+							<img data-product="{{item.product.id}}" data-action="remove" class="chg-quantity update-cart " src="{% static  'images/arrow-down.png' %}">
 						</div>
 					</div>
 					<div style="flex:1"><p>GHC{{item.get_total}}</p></div>

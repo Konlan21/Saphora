@@ -8,6 +8,25 @@
       name="viewport"
       content="width=device-width, initial-scale=1.0 maximum-scale=1, minimum-scale=1"
     />
+    <script type="text/javascript">
+      var user = '{{ request.user }}'
+    function getCookie(name) {
+    let cookieValue = null;
+    if (document.cookie && document.cookie !== '') {
+        const cookies = document.cookie.split(';');
+        for (let i = 0; i < cookies.length; i++) {
+            const cookie = cookies[i].trim();
+            // Does this cookie string begin with the name we want?
+            if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                break;
+            }
+        }
+    }
+    return cookieValue;
+}
+const csrftoken = getCookie('csrftoken');
+    </script>
     <title>Saphora</title>
     <link
       rel="stylesheet"
@@ -18,7 +37,6 @@
     <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}" />
   </head>
   <body>
-
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
       <a class="navbar-brand"  href="{% url 'store' %}">Saphora</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -38,7 +56,7 @@
            <a href="{% url 'cart' %}">
             <img  id="cart-icon" src="{% static 'images/cart.png' %}">
           </a>
-          <p id="cart-total">0</p>
+          <p id="cart-total">{{ cartItems }}</p>
 	    </div>  
 
 

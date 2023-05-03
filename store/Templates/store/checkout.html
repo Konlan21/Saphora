@@ -105,21 +105,21 @@ function submitFormData(){
 	var userFormData = {
 		'name': null,
 		'email': null,
-		'total': total,
+		'total': total
 	}
 
 	var shippingInfo =  {
 		'address': null,
 		'city': null,
-		'state': total,
+		'state': null,
 		'zipcode': null
 	}
 
 	if (shipping != 'False') {
 		shippingInfo.address = form.address.value
-		shippingInfo.city = form.address.city
-		shippingInfo.state = form.address.state
-		shippingInfo.zipcode = form.address.zipcode
+		shippingInfo.city = form.address.value
+		shippingInfo.state = form.address.value
+		shippingInfo.zipcode = form.address.value
 	}
 
 	if (user == 'AnonymousUser') {
@@ -127,6 +127,8 @@ function submitFormData(){
 		userFormData.email = form.email.value
 
 	}
+
+	
 	var url = '/process_order/'
 	fetch(url, {
           method : 'POST',
@@ -143,7 +145,7 @@ function submitFormData(){
 		  window.location.href = "{% url 'store' %}"
 	})
 
-}
+		}
 
 	</script>
 {% endblock content %}

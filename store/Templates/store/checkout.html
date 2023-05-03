@@ -69,7 +69,7 @@
 	</div>
 	<script type="text/javascript">
 		var shipping = '{{order.shipping}}'
-		var total = '{{ order.shipping }}'
+		var total = '{{ order.get_cart_total }}'
 		if(shipping=='False'){
 			document.getElementById('shipping-info').innerHTML = ''
 		}
@@ -128,7 +128,6 @@ function submitFormData(){
 
 	}
 
-	
 	var url = '/process_order/'
 	fetch(url, {
           method : 'POST',

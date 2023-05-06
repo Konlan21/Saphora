@@ -1,11 +1,9 @@
-
-
 from django.shortcuts import render
 from . models import *
 from django.http import JsonResponse
 import json
 import datetime
-from . utils import cookieCart
+from . utils import cookieCart, guestOrder
 
 def store(request):
 
@@ -79,14 +77,17 @@ def processOrder(request):
 
     if request.user.is_authenticated:
         customer = request.user.customer
-        order, created = Order.objects.get_or_create(customer=customer, completed=False)  
+        order, created = Order.objects.get_or_create(customer=customer, completed=False)
+    else:
+        order, created = guestOrder(request, data)
         total = float(data['form']['total'])
         order.transation_id = transaction_id
 
         if total == order.get_cart_total:
             order.complete = True
-        order.save()
 
+        order.save()  
+              
         if order.shipping == True:
             ShippingAddress.objects.create(
                 customer=customer,
@@ -96,29 +97,4 @@ def processOrder(request):
                 state=data['shipping']['state'],
                 zipcode=data['shipping']['zipcode'],
                 )
-
-    else:
-        print('User is not logged in')
-        print('COOKIES:', request.COOKIES)
-        name = data['form']['name']
-        email = data['form']['email']
-        cookieData = cookieCart(request)
-        items = cookieData['items']
-        customer, created = Customer.objects.get_or_create(
-            email=email
-        )
-        customer.name = name
-        customer.save()
-
-        order = Order.objects.create(
-            customer=customer,
-            complete=False
-        )
-        for item in items:
-            product = Product.objects.get(id=item['product']['id'])
-            orderItem = OrderItem.objects.create(
-                product=product,
-                order=order,
-                quantity=item['quantity']
-            )
     return JsonResponse('payment submitted..', safe=False)

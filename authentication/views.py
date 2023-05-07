@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
+from django.contrib import messages
 
 
 def login_customer(request):
@@ -10,5 +11,7 @@ def login_customer(request):
         if user is not None:
             login(request, user)
             return redirect('store')
-        return redirect('login')
+        else:
+            messages.success(request, 'There was an error logging in, Please try again..')
+        return redirect('customer-login')
     return render(request, 'authentication/login_user.html', {})

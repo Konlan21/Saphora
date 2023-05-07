@@ -15,3 +15,9 @@ def login_customer(request):
             messages.success(request, 'There was an error logging in, Please try again..')
         return redirect('customer-login')
     return render(request, 'authentication/login_user.html', {})
+
+
+
+def logout_customer(request):
+    logout(request)
+    return redirect('store')

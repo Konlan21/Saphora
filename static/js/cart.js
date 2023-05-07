@@ -16,18 +16,20 @@ for(var i=0; i<updateBtns.length ; i++)
     })
   }
 
-
   function addCookieItem(productId, action){
+    let cart = JSON.parse(getCookie('cart') || '{}');
     console.log('Not logged in...')
-  
     if (action == 'add'){
+        console.log(cart)
         if (cart[productId]==undefined){
           cart[productId] = {'quantity':1}
         }
         else{
           cart[productId]['quantity'] += 1
+          console.log(cart)
         }
     }
+
   
     if (action == 'remove') {
       cart[productId]['quantity'] -= 1

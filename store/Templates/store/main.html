@@ -63,17 +63,19 @@
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-    
+      
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item active">
-            <a class="nav-link"  href="{% url 'store' %}">Store<span class="sr-only">(current)</span></a>
+            <!-- <a class="nav-link"  href="{% url 'store' %}">Store<span class="sr-only">(current)</span></a> -->
           </li>
-     
+          
         </ul>
         <div class="form-inline my-2 my-lg-0">
+          
           {% if user.is_authenticated %}
-          <p>Welcom {{ user.username }}</p>
+          <li class="username__nav">{{ user.username }}</li>
+          <a href="{% url 'customer-logout' %}"class="btn btn-warning">Logout</a>
           {% else %}
           <a href="{% url 'customer-login' %}"class="btn btn-warning">Login</a>
           {% endif %}

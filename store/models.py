@@ -6,7 +6,7 @@ class Customer(models.Model):
     user = models.OneToOneField(User, null=True, blank=True, on_delete=models.PROTECT)
     first_name = models.CharField(max_length=255, null=True)
     last_name = models.CharField(max_length=255, null=True)
-    email = models.EmailField(unique=True)
+    email = models.EmailField()
 
     def __str__(self) -> str:
         return f'{self.last_name, self.first_name}'

@@ -32,4 +32,4 @@ def register_customers(request):
             return redirect('customer-login')
     else:
         form = UserCreationForm()
-    return render(request, 'authentication/register_customer.html', {'form': form})
+    return render(request, 'authentication/register_customers.html', {'form': form})

@@ -6,14 +6,6 @@ h1,h2,h3,h4,h5,h6{
 	color:(hsl(0, 0%, 30%));
 }
 
-.username__nav {
-	color: #fff;
-	list-style: none;
-	margin-right: 2rem;
-}
-
-
-
 .box-element{
 	box-shadow:hsl(0, 0%, 80%) 0 0 16px;
 	background-color: #fff;
@@ -64,6 +56,10 @@ h1,h2,h3,h4,h5,h6{
 	border-radius: 5px;
 }
 
+.login-btn {
+	margin-right: 1rem;
+}
+
 .btn-outline-success {
 	outline: 0;
 	border-radius: 3px;
@@ -86,7 +82,6 @@ h1,h2,h3,h4,h5,h6{
 .btn-outline-secondary:hover {
 	background-color: rgba(208, 104, 0, 0.8);
 }
-
 
 .row-image{
 	width: 100px;
@@ -132,3 +127,21 @@ h1,h2,h3,h4,h5,h6{
 	display: none!important;
 }
 
+
+/* custom css */
+.navbar-brand {
+	font-weight: bold;
+}
+
+.username__nav {
+	color: #fff;
+	list-style: none;
+	margin-right: 2rem;
+	font-style: italic;
+	color: #fff;
+}
+
+.username {
+	font-weight: bold;
+	font-style: normal;
+}

@@ -74,10 +74,11 @@
         <div class="form-inline my-2 my-lg-0">
           
           {% if user.is_authenticated %}
-          <li class="username__nav">{{ user.username }}</li>
+          <li class="username__nav">Welcome, <span class="username">{{ user.username }}</span></li>
           <a href="{% url 'customer-logout' %}"class="btn btn-warning">Logout</a>
           {% else %}
-          <a href="{% url 'customer-login' %}"class="btn btn-warning">Login</a>
+          <a href="{% url 'customer-login' %}"class="btn login-btn btn-warning">Login</a>
+          <a href="{% url 'customer-signup' %}"class="btn btn-warning">Create an Account</a>
           {% endif %}
            <a href="{% url 'cart' %}">
             <img  id="cart-icon" src="{% static 'images/cart.png' %}">

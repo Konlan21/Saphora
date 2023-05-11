@@ -27,6 +27,17 @@ def product_detail(request, id):
     return render(request, 'store/product_detail.html', context)
 
 
+def search_products(request):
+    if request.method == 'POST':
+        searched = request.POST['searched']
+        results = Product.objects.filter(name__icontains=searched)
+        context = {'results': results, 'searched': searched}
+        return render(request, 'store/search_products.html', context)
+    else:
+        return render(request, 'store/search_products.html', {})
+
+
+
 def cart(request):
     if request.user.is_authenticated:
         customer = request.user.customer  

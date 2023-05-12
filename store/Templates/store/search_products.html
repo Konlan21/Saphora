@@ -1,6 +1,6 @@
 {% extends 'store/main.html' %}
 {% block content %}
-<div class="row">
+<!-- <div class="row">
     <h3>Search results for {{ searched }} </h3>
     {% for result in results %}
       <div class="col-lg-4">
@@ -16,5 +16,44 @@
           </div>
       </div>  
     {% endfor %}
+    </div> -->
+
+    <div class="row">
+      <div class="col text-center">
+        <p>Search results for '{{ searched }}'</p>
+      </div>
     </div>
-{% endblock content %}
+    
+    {% if results %}
+      <div class="row">
+        {% for result in results %}
+          <div class="col-lg-4">
+            <img class="thumbnail" src="{{ result.imageURL }}">
+            <div class="box-element product">
+              <h6><strong>{{ result.name }}</strong></h6>
+              <hr>
+              <a class="btn btn-outline-success" href="{% url 'product-detail' result.id %}">View</a>
+              <h4 style="display: inline-block; float: right">
+                <strong>GHC{{ result.price|floatformat:2 }}</strong>
+              </h4>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    {% else %}
+      <div class="row">
+        <div class="col text-center">
+          <p class="small">No results found.</p>
+        </div>
+      </div>
+    {% endif %}
+    
+    <div class="row">
+      <div class="col text-center mt-3">
+        <a href="{% url 'store' %}" class="btn btn-outline-secondary">Back to Store</a>
+      </div>
+    </div>
+
+    
+    
+    {% endblock content %}

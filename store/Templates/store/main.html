@@ -107,7 +107,7 @@
         <form method="post" action="{% url 'search-products' %}" class="form-inline my-2 my-lg-0 mr-lg-4">
           {% csrf_token %}
           <div class="input-group">
-            <input class="form-control" name="searched" type="text" id="search-input" placeholder="Search">
+            <input class="form-control" name="searched" type="text" id="search-input" placeholder="Search for products">
             <div class="input-group-append">
               <button class="btn btn-outline-secondary" type="submit" data-target="#search-input">
                 Search

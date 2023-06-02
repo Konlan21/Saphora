@@ -10,6 +10,12 @@ class CustomerAdmin(admin.ModelAdmin):
     search_fields = ['name']
 
 
+@admin.register(Collection)
+class Collection(admin.ModelAdmin):
+    list_display = ['id', 'title']
+    list_per_page = 10
+
+
 @admin.register(Product)
 class ProductAdmin(admin.ModelAdmin):
     list_display = ['name', 'price', 'inventory', 'digital']

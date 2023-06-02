@@ -11,6 +11,10 @@ class Customer(models.Model):
     def __str__(self) -> str:
         return f'{self.last_name, self.first_name}'
 
+class Collection(models.Model):
+    title = models.CharField(max_length=255)
+
+
 class Product(models.Model):
     name = models.CharField(max_length=255)
     price = models.DecimalField(max_digits=6, decimal_places=2)
@@ -18,6 +22,7 @@ class Product(models.Model):
     digital = models.BooleanField(default=False, null=True, blank=False)
     image = models.ImageField(null=True, blank=True)  
     description = models.TextField(null=True, blank=True)
+    collection = models.ForeignKey(Collection, on_delete=models.CASCADE, null=True)
     def __str__(self):
         return self.name
     @property

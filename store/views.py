@@ -50,7 +50,7 @@ def cart(request):
         order = cookieData['order']
         items = cookieData['items']
     context = {'items':items, 'order':order, 'cartItems': cartItems} 
-    return render(request, 'store/`cart.htm`l', context)
+    return render(request, 'store/cart.html', context)
 
 
 def checkout(request):
@@ -116,3 +116,7 @@ def processOrder(request):
                 zipcode=data['shipping']['zipcode'],
                 )
     return JsonResponse('payment submitted..', safe=False)
+
+
+
+

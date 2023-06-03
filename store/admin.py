@@ -16,6 +16,8 @@ class Collection(admin.ModelAdmin):
     list_per_page = 10
 
 
+
+
 @admin.register(Product)
 class ProductAdmin(admin.ModelAdmin):
     list_display = ['name', 'price', 'inventory', 'digital']

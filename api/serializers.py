@@ -5,11 +5,12 @@ from store.models import *
 class ProductSerializer(ModelSerializer):
     class Meta:
         model = Product
-        fields = ['id', 'name', 'price', 'description']
+        fields = ['id', 'name', 'price', 'image', 'description']
 
 class CollectionSerializer(ModelSerializer):
-    model = Collection
-    fields = ['id', 'title']
+    class Meta:
+        model = Collection
+        fields = ['id', 'title']
 
 
 class CustomerSerializer(ModelSerializer):

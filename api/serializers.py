@@ -7,6 +7,7 @@ class ProductSerializer(ModelSerializer):
         model = Product
         fields = ['id', 'name', 'price', 'image', 'description']
 
+
 class CollectionSerializer(ModelSerializer):
     class Meta:
         model = Collection

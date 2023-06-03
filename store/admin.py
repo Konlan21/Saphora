@@ -20,11 +20,16 @@ class Collection(admin.ModelAdmin):
 
 @admin.register(Product)
 class ProductAdmin(admin.ModelAdmin):
-    list_display = ['name', 'price', 'inventory', 'digital']
+    list_display = ['name', 'price', 'inventory_status', 'digital']
     # list_editable = ['name', 'price', 'digital']
     list_filter = ['price']
     list_per_page = 10
     search_fields = ['name']
+
+    def inventory_status(self, product):
+            if product.inventory < 10:
+                return "Low"
+            return "Ok"
 
 
 @admin.register(Order)

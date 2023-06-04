@@ -21,7 +21,6 @@ class Collection(admin.ModelAdmin):
 @admin.register(Product)
 class ProductAdmin(admin.ModelAdmin):
     list_display = ['name', 'price', 'inventory_status', 'digital']
-    # list_editable = ['name', 'price', 'digital']
     list_filter = ['price']
     list_per_page = 10
     search_fields = ['name']

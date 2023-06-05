@@ -19,3 +19,8 @@ class CustomerSerializer(ModelSerializer):
         model = Customer
         fields = ['id', 'first_name', 'last_name', 'email']
 
+
+class OrderSerializer(ModelSerializer):
+    class Meta:
+        model = Order
+        fields = ['id', 'customer', 'date_ordered', 'transaction_id', 'payment_status']

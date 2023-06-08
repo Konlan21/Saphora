@@ -24,7 +24,7 @@ class ProductViewSet(ModelViewSet):
 class CustomerViewSet(ModelViewSet):
     queryset = Customer.objects.all()
     serializer_class = CustomerSerializer
-    permission_classes = [IsAuthenticatedOrReadOnly]  
+    permission_classes = [IsAdminUser]  
     filter_backends = [DjangoFilterBackend, SearchFilter, OrderingFilter]
     filterset_fields = ['first_name']
     search_fields = ['first_name', 'last_name', 'email']
@@ -53,6 +53,7 @@ class OrderViewset(ModelViewSet):
     filterset_fields = ['id']
     search_fields = ['id', 'date_ordered', 'payment_status']
     ordering_fields = ['date_ordered', 'payment_status']
+    permission_classes = [IsAuthenticatedOrReadOnly]
 
 class ReviewViewSet(ModelViewSet):
     serializer_class = ReviewSerializer

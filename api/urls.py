@@ -5,11 +5,11 @@ from .views import *
 
 
 router = routers.DefaultRouter()
-router.register('product_list', ProductViewSet)
-products_router = routers.NestedDefaultRouter(router, 'product_list', lookup='product')
+router.register('products', ProductViewSet)
+products_router = routers.NestedDefaultRouter(router, 'products', lookup='product')
 products_router.register('reviews', ReviewViewSet, basename='product-reviews')
-router.register('customer_list', CustomerViewSet)
-router.register('collection_list', CollectionViewSet)
-router.register('order_list', OrderViewset)
+router.register('customers', CustomerViewSet, basename='customer-list')
+router.register('collections', CollectionViewSet, basename='customer-list')
+router.register('orders', OrderViewset, basename='order-list')
 
-urlpatterns = router.urls + products_router.urls
+urlpatterns = router.urls + products_router.urls 

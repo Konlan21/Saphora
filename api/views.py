@@ -53,3 +53,12 @@ class OrderViewset(ModelViewSet):
     filterset_fields = ['id']
     search_fields = ['id', 'date_ordered', 'payment_status']
     ordering_fields = ['date_ordered', 'payment_status']
+
+class ReviewViewSet(ModelViewSet):
+    serializer_class = ReviewSerializer
+
+    def get_queryset(self):
+        return Reviews.objects.filter(product_id=self.kwargs['product_pk'])
+
+    def get_serializer_context(self):
+        return {'product_id': self.kwargs['product_pk']}

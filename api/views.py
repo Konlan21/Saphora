@@ -20,6 +20,7 @@ class ProductViewSet(ModelViewSet):
             return [AllowAny()]
         return [IsAdminUser()]
 
+
 class CustomerViewSet(ModelViewSet):
     queryset = Customer.objects.all()
     serializer_class = CustomerSerializer
@@ -29,7 +30,7 @@ class CustomerViewSet(ModelViewSet):
     search_fields = ['first_name', 'last_name', 'email']
     ordering_fields = ['first_name', 'last_name']
 
-    
+      
     
 class CollectionViewSet(ModelViewSet):
     queryset = Collection.objects.all()

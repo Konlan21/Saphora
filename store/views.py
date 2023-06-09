@@ -4,9 +4,14 @@ from django.http import JsonResponse
 import json
 import datetime
 from . utils import cookieCart, guestOrder
+import logging
+
+
+logger = logging.getLogger(__name__)
+
 
 def store(request):
-
+    logger.info('Calling httpbin')
     if request.user.is_authenticated:
         customer = request.user.customer  
         order, created = Order.objects.get_or_create(customer=customer, completed=False)
@@ -18,6 +23,7 @@ def store(request):
 
     products = Product.objects.all()
     context = {'products': products, 'cartItems': cartItems}
+    logger.info('Recieved the response')
     return render(request, 'store/store.html', context)
 
 

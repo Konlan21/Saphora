@@ -72,15 +72,16 @@ h1,h2,h3,h4,h5,h6{
 .btn-outline-success:hover {
 	background-color: #40868d;
 }
-.btn-outline-secondary {
+.btn-custom {
 	background: #f68b1e;
-	color: #fff;
-	border: 0;
-	border-radius: 3px;
+	color: #000;
+	border: 1px solid #000;
+	/* border-radius: 3px; */
 	transition: background-color .25s;
 }
-.btn-outline-secondary:hover {
+.btn-custom {
 	background-color: rgba(208, 104, 0, 0.8);
+	border: 0;
 }
 
 .row-image{

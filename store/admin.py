@@ -1,5 +1,6 @@
 from django.contrib import admin
 from store.models import *
+from django.db.models.aggregates import Count
 
 
 @admin.register(Customer)
@@ -12,10 +13,16 @@ class CustomerAdmin(admin.ModelAdmin):
 
 @admin.register(Collection)
 class Collection(admin.ModelAdmin):
-    list_display = ['id', 'title']
+    list_display = ['id', 'title', 'products_count']
     list_per_page = 10
 
+    def products_count(self, collection):
+        return collection.products_count
 
+    def get_queryset(self, request):
+        return super().get_queryset(request).annotate(
+            products_count = Count('product')
+        )
 
 
 @admin.register(Product)
@@ -51,3 +58,8 @@ class ShippingAddressAdmin(admin.ModelAdmin):
     search_fields = ['address']
     list_per_page = 10
 
+@admin.register(Reviews)
+class ReviewsAdmin(admin.ModelAdmin):
+    list_display = ['product', 'description', 'name', 'date']
+    list_filter = ['product']
+    search_fields = ['description', 'name']

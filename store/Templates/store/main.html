@@ -58,38 +58,6 @@
     <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}" />
   </head>
   <body>
-    <!-- <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-      <a class="navbar-brand"  href="{% url 'store' %}">Saphora</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
-
-          
-        </ul>
-        <div class="form-inline my-2 my-lg-0">
-          
-          {% if user.is_authenticated %}
-          <li class="username__nav">Welcome, <span class="username">{{ user.username }}</span></li>
-          <a href="{% url 'customer-logout' %}"class="btn btn-warning">Logout</a>
-          {% else %}
-          <a href="{% url 'customer-login' %}"class="btn login-btn btn-warning">Login</a>
-          <a href="{% url 'customer-signup' %}"class="btn btn-warning">Create an Account</a>
-          {% endif %}
-           <a href="{% url 'cart' %}">
-            <img  id="cart-icon" src="{% static 'images/cart.png' %}">
-          </a>
-          <p id="cart-total">{{ cartItems }}</p>
-	    </div>  
-
-
-    
-        </div>
-      </div>
-    </nav> -->
-
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
       <a class="navbar-brand" href="{% url 'store' %}">Saphora</a>
       <a class="nav-link font-weight-bold text-white" href="{% url 'api-root'%}">Go to API</a>
@@ -110,7 +78,7 @@
           <div class="input-group">
             <input class="form-control" name="searched" type="text" id="search-input" placeholder="Search for products">
             <div class="input-group-append">
-              <button class="btn btn-outline-secondary" type="submit" data-target="#search-input">
+              <button class="btn search-btn btn-outline-secondary" type="submit" data-target="#search-input">
                 Search
               </button>
             </div>

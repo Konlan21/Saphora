@@ -122,10 +122,12 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'static/images')
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
+from api.permissions import *
 
 REST_FRAMEWORK = {
-    'PAGE_SIZE': 10,
+    'PAGE_SIZE': 7,
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
+    'DEFAULT_PERMISSION_CLASSES': ['api.permissions.IsAdminOrReadOnly']
 }
 
 LOGGING = {

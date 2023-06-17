@@ -50,39 +50,6 @@ h1,h2,h3,h4,h5,h6{
 .col-lg-4, .col-lg-6, .col-lg-8, .col-lg-12{
 	margin-top: 10px;
 }
-/* customized buttons */
-.btn{
-	border-radius: 0;
-	border-radius: 5px;
-}
-
-.login-btn {
-	margin-right: 1rem;
-}
-
-.btn-outline-success {
-	outline: 0;
-	border-radius: 3px;
-	color: #40868d;
-	border: 1px solid #40868d;
-	padding: .25rem .6rem;
-	transition: background-color .25s;
-}
-
-.btn-outline-success:hover {
-	background-color: #40868d;
-}
-.btn-custom {
-	background: #f68b1e;
-	color: #000;
-	border: 1px solid #000;
-	/* border-radius: 3px; */
-	transition: background-color .25s;
-}
-.btn-custom {
-	background-color: rgba(208, 104, 0, 0.8);
-	border: 0;
-}
 
 .row-image{
 	width: 100px;
@@ -145,4 +112,14 @@ h1,h2,h3,h4,h5,h6{
 .username {
 	font-weight: bold;
 	font-style: normal;
+}
+
+/* search-btn */
+.search-btn {
+	background-color: #f6b903;
+	color: #000;
+}
+.search-btn:hover {
+	background-color: #dfa802;
+	color: #000;
 }

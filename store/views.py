@@ -11,6 +11,7 @@ logger = logging.getLogger(__name__)
 
 
 def store(request):
+    products = Product.objects.all()
     logger.info('Calling httpbin')
     if request.user.is_authenticated:
         customer = request.user.customer  
@@ -21,7 +22,6 @@ def store(request):
         cookieData = cookieCart(request)
         cartItems = cookieData['cartItems']
 
-    products = Product.objects.all()
     context = {'products': products, 'cartItems': cartItems}
     logger.info('Recieved the response')
     return render(request, 'store/store.html', context)
@@ -29,18 +29,34 @@ def store(request):
 
 def product_detail(request, id):
     product = get_object_or_404(Product, id=id)
-    context = {'product': product}
+    if request.user.is_authenticated:
+        customer = request.user.customer  
+        order, created = Order.objects.get_or_create(customer=customer, completed=False)
+        items = order.orderitem_set.all()
+        cartItems = order.get_cart_items
+    else:  
+        cookieData = cookieCart(request)
+        cartItems = cookieData['cartItems']
+    context = {'product': product, 'cartItems': cartItems}
     return render(request, 'store/product_detail.html', context)
 
 
 def search_products(request):
+    if request.user.is_authenticated:
+        customer = request.user.customer  
+        order, created = Order.objects.get_or_create(customer=customer, completed=False)
+        items = order.orderitem_set.all()
+        cartItems = order.get_cart_items
+    else:  
+        cookieData = cookieCart(request)
+        cartItems = cookieData['cartItems']
     if request.method == 'POST':
         searched = request.POST['searched']
         results = Product.objects.filter(name__icontains=searched)
-        context = {'results': results, 'searched': searched}
+        context = {'results': results, 'searched': searched, 'cartItems': cartItems}
         return render(request, 'store/search_products.html', context)
     else:
-        return render(request, 'store/search_products.html', {})
+        return render(request, 'store/search_products.html', {'cartItems': cartItems})
 
 
 

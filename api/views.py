@@ -5,6 +5,7 @@ from rest_framework.filters import SearchFilter, OrderingFilter
 from rest_framework.pagination import PageNumberPagination
 from store.models import *
 from .serializers import *
+from .permissions import *
 
 
 class ProductViewSet(ModelViewSet):
@@ -15,16 +16,10 @@ class ProductViewSet(ModelViewSet):
     search_fields = ['name', 'description']
     ordering_fields = ['price']
 
-    def get_permissions(self):
-        if self.request.method == 'GET':
-            return [AllowAny()]
-        return [IsAdminUser()]
-
 
 class CustomerViewSet(ModelViewSet):
     queryset = Customer.objects.all()
     serializer_class = CustomerSerializer
-    permission_classes = [IsAuthenticatedOrReadOnly]  
     filter_backends = [DjangoFilterBackend, SearchFilter, OrderingFilter]
     filterset_fields = ['first_name']
     search_fields = ['first_name', 'last_name', 'email']
@@ -40,11 +35,6 @@ class CollectionViewSet(ModelViewSet):
     search_fields = ['title']
     ordering_fields = ['id']
 
-    def get_permissions(self):
-        if self.request.method == 'GET':
-            return [AllowAny()]
-        return [IsAdminUser()]
-
 
 class OrderViewset(ModelViewSet):
     queryset = Order.objects.all()
@@ -53,19 +43,16 @@ class OrderViewset(ModelViewSet):
     filterset_fields = ['id']
     search_fields = ['id', 'date_ordered', 'payment_status']
     ordering_fields = ['date_ordered', 'payment_status']
-    permission_classes = [IsAuthenticatedOrReadOnly]
 
 
 class OrderItemViewSet(ModelViewSet):
     queryset = OrderItem.objects.all()
     serializer_class = OrderItemSerializer
-    permission_classes = [IsAuthenticatedOrReadOnly]
 
 
 class ShippingAddressViewSet(ModelViewSet):
     queryset = ShippingAddress.objects.all().order_by('date_added')
     serializer_class = ShippingAddressSerializer
-    permission_classes = [IsAuthenticatedOrReadOnly]
 
 class ReviewViewSet(ModelViewSet):
     serializer_class = ReviewSerializer

@@ -14,7 +14,7 @@
             <div class="box-element product">
               <h6><strong>{{ result.name }}</strong></h6>
               <hr>
-              <a class="btn btn-outline-success" href="{% url 'product-detaill' result.id %}">View</a>
+              <a class="btn btn-outline-success" href="{% url 'product-detail' result.id %}">View</a>
               <h4 style="display: inline-block; float: right">
                 <strong>GHC{{ result.price|floatformat:2 }}</strong>
               </h4>

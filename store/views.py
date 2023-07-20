@@ -140,5 +140,7 @@ def processOrder(request):
     return JsonResponse('payment submitted..', safe=False)
 
 
+def api_endpoints(request):
+    return render(request, 'store/api_endpoints.html')
 
 

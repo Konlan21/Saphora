@@ -1,41 +1,48 @@
 {% extends 'store/main.html' %}
 {% block content %}
     <div class="row">
-      <div class="col text-center">
-        <p>Search results for '{{ searched }}'</p>
-      </div>
-    </div>
-    
-    {% if results %}
-      <div class="row">
-        {% for result in results %}
-          <div class="col-lg-4">
-            <img class="thumbnail" src="{{ result.imageURL }}">
-            <div class="box-element product">
-              <h6><strong>{{ result.name }}</strong></h6>
-              <hr>
-              <a class="btn btn-outline-success" href="{% url 'product-detail' result.id %}">View</a>
-              <h4 style="display: inline-block; float: right">
-                <strong>GHC{{ result.price|floatformat:2 }}</strong>
-              </h4>
-            </div>
-          </div>
-        {% endfor %}
-      </div>
-    {% else %}
-      <div class="row">
         <div class="col text-center">
-          <p class="small">No results found.</p>
+            {% if searched %}
+                <div class="alert alert-info">
+                    <p>Search results for '{{ searched }}'</p>
+                </div>
+            {% else %}
+                <div class="alert alert-warning">
+                    <p>Please enter a search term to find products.</p>
+                </div>
+            {% endif %}
         </div>
-      </div>
-    {% endif %}
-    
-    <div class="row">
-      <div class="col text-center mt-3">
-        <a href="{% url 'store' %}" class="btn btn-outline-secondary">Back to Store</a>
-      </div>
     </div>
 
-    
-    
-    {% endblock content %}
+    {% if results %}
+        <div class="row">
+            {% for result in results %}
+                <div class="col-lg-4">
+                    <img class="thumbnail" src="{{ result.imageURL }}">
+                    <div class="box-element product">
+                        <h6><strong>{{ result.name }}</strong></h6>
+                        <hr>
+                        <a class="btn btn-outline-success" href="{% url 'product-detail' result.id %}">View</a>
+                        <h4 style="display: inline-block; float: right">
+                            <strong>GHC{{ result.price|floatformat:2 }}</strong>
+                        </h4>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <div class="row">
+            <div class="col text-center">
+                <div class="alert alert-danger">
+                    <p>No products found. Please try a different name.</p>
+                </div>
+            </div>
+        </div>
+    {% endif %}
+
+    <div class=" mb-4 row">
+        <div class="col text-center mt-3">
+            <a href="{% url 'store' %}" class="btn btn-outline-secondary">Back to Store</a>
+        </div>
+    </div>
+{% endblock content %}

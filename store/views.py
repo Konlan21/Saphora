@@ -1,4 +1,5 @@
 from django.shortcuts import render, get_object_or_404
+from django.core.paginator import Paginator
 from . models import *
 from django.http import JsonResponse
 import json
@@ -22,7 +23,13 @@ def store(request):
         cookieData = cookieCart(request)
         cartItems = cookieData['cartItems']
 
-    context = {'products': products, 'cartItems': cartItems}
+    # Pagination
+    posts_per_page = 6
+    paginator = Paginator(products, posts_per_page)
+    page_number = request.GET.get('page')
+    current_page = paginator.get_page(page_number)
+
+    context = {'products': current_page, 'cartItems': cartItems}
     logger.info('Recieved the response')
     return render(request, 'store/store.html', context)
 

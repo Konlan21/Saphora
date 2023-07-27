@@ -1,1 +1,4 @@
 general.log
+/venv/
+/.vscode/
+requirements.txt

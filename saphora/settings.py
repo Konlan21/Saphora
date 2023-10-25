@@ -37,6 +37,8 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "rest_framework",
     "django_filters",
+    "rest_framework_swagger",
+    "drf_yasg",
     "store",
     "authentication",
     "api"

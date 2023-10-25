@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 
 from pathlib import Path
 import os
+import cloudinary_storage
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent.parent
@@ -39,10 +40,21 @@ INSTALLED_APPS = [
     "django_filters",
     "rest_framework_swagger",
     "drf_yasg",
+    "cloudinary",
+    "cloudinary_storage",
     "store",
     "authentication",
     "api"
 ]
+
+CLOUDINARY_STORAGE = {
+    'CLOUD_NAME': 'dy2kqg5by',
+    'API_KEY': '961195596386852',
+    'API_SECRET': '9zsRt1gqO3nQhE_XEzteg1dwFCU'
+}
+
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",  

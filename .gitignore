@@ -4,3 +4,5 @@ general.log
 saphora/__pycache__/
 api/__pycache__/
 authentication/__pycache__/
+media/
+static/

@@ -1,4 +1,6 @@
 general.log
 /venv/
-requirements.txt
 /.vscode/
+saphora/__pycache__/"
+api/__pycache__/
+authentication/__pycache__/

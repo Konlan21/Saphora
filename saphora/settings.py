@@ -21,7 +21,7 @@ DEBUG = True
 
 SECRET_KEY = "django-insecure-7c7f9ke71q!xary4!m*u-r-xpkk#m!n0q4-seu=#k+!uyj@b$_"
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/

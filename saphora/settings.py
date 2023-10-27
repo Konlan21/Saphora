@@ -97,6 +97,11 @@ WSGI_APPLICATION = "saphora.wsgi.application"
 #         'NAME': os.path.join(BASE_DIR, 'db.sqlite3')
 #     }
 # }
+import dj_database_url
+
+DATABASES = {
+    'default': dj_database_url.parse('postgres://video_db_uwyv_user:xtb6sJGqH7aQq1EQeC6OeHswtC4EW0wP@dpg-ckavfr6smu8c73961pt0-a.ohio-postgres.render.com/video_db_uwyv')
+}
 
 
 # Password validation

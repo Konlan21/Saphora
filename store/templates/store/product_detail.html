@@ -27,7 +27,7 @@
                   Add to Cart
                 </button>
               </div>
-              <h4 class="mb-0">GHC{{ product.price|floatformat:2 }}</h4>
+              <h4 class="mb-0">${{ product.price|floatformat:2 }}</h4>
             </div>
             <h6>Customer Reviews</h6>
             {% if product.reviews.all %}

@@ -24,7 +24,7 @@
                         <hr>
                         <a class="btn btn-outline-success" href="{% url 'product-detail' result.id %}">View</a>
                         <h4 style="display: inline-block; float: right">
-                            <strong>GHC{{ result.price|floatformat:2 }}</strong>
+                            <strong>${{ result.price|floatformat:2 }}</strong>
                         </h4>
                     </div>
                 </div>

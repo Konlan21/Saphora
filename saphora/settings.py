@@ -87,17 +87,17 @@ TEMPLATES = [
 
 WSGI_APPLICATION = "saphora.wsgi.application"
 
-
+import dj_database_url
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3')
+        # 'ENGINE': 'django.db.backends.sqlite3',
+        # 'NAME': os.path.join(BASE_DIR, 'db.sqlite3')
     }
 }
-
+DATABASES['default'] = dj_database_url.parse("postgresql://saphora_db_user:vEyL03GMOrl0r79XpdxiMi8qeaoBmat7@dpg-cq6reuuehbks7395qf50-a.oregon-postgres.render.com/saphora_db")
 
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators

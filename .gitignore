@@ -1,5 +1,5 @@
 general.log
-/venv/
+/env/
 /.vscode/
 saphora/__pycache__/
 api/__pycache__/

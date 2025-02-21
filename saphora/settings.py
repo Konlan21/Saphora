@@ -29,6 +29,7 @@ ALLOWED_HOSTS = ['*']
 
 # Application definition
 
+
 INSTALLED_APPS = [
     "django.contrib.admin",
     "django.contrib.auth",
@@ -100,7 +101,7 @@ WSGI_APPLICATION = "saphora.wsgi.application"
 import dj_database_url
 
 DATABASES = {
-    'default': dj_database_url.parse('postgresql://saphora_newdb_user:zP6Qo0LrwmM9IchsmSnhJWhePSxtTZ2d@dpg-cu62ukt2ng1s73blsqj0-a.ohio-postgres.render.com/saphora_newdb')
+    'default': dj_database_url.parse('postgresql://saphora_db_cksr_user:gyuzE7z7tOLH2R8AWQExBwXkhRBwmE2l@dpg-cus5gs3v2p9s73asdu30-a.oregon-postgres.render.com/saphora_db_cksr')
 }
 
 
